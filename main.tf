@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "bootstrap-sessions"
+    bucket = "bootstrap-session"
     key    = "state/bootstrap-vpc.tfstate"    
     region = "eu-west-2"
   }
