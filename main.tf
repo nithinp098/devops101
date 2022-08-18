@@ -7,7 +7,7 @@ terraform {
 }
 
 module "london" {
-  source     = "./modules/platform-modules"
+  source     = "./modules"
   providers = {
     aws = aws.london
   }
@@ -15,7 +15,7 @@ module "london" {
 }
 
 module "ireland" {
-  source     = "./modules/platform-modules"
+  source     = "./modules"
   providers = {
     aws = aws.ireland
   }
