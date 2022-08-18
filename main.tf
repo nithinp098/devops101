@@ -7,15 +7,17 @@ terraform {
 }
 
 module "london" {
-  source     = "./modules"
+  source     = "./modules/platform-modules"
   providers = {
     aws = aws.london
   }
+  aws_region = "eu-west-2"
 }
 
 module "ireland" {
-  source     = "./modules"
+  source     = "./modules/platform-modules"
   providers = {
     aws = aws.ireland
   }
+  aws_region = "eu-west-1"
 }
