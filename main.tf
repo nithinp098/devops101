@@ -184,7 +184,7 @@ resource "aws_security_group_rule" "public_in_https" {
 }
 
 resource "aws_instance" "ec2" {
-  ami = "ami-0d729d2846a86a9e7"
+  ami = "ami-0e34bbddc66def5ac"
   instance_type = "t2.micro"
   key_name = "bootstrap"
   iam_instance_profile = "dcms-ssm-patching-ec2"
