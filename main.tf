@@ -187,7 +187,7 @@ resource "aws_instance" "ec2" {
   ami = "ami-0d729d2846a86a9e7"
   instance_type = "t2.micro"
   key_name = "bootstrap"
-  iam_instance_profile = "dcms-Administrator"
+  iam_instance_profile = "dcms-ssm-patching-ec2"
   subnet_id = element(aws_subnet.private_subnet.*.id, 0)
   vpc_security_group_ids = [
       "${aws_security_group.public.id}",
