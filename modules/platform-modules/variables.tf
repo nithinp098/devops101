@@ -31,6 +31,11 @@ variable "private_subnets_cidr" {
 }
 
 variable "availability_zones" {
-    type = list(string)
-    default = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+    description = "az"
+    #type = list(string)
+    #default = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+}
+
+variable "image_id" {
+    description = "Ami ID"
 }

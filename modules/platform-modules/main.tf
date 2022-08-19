@@ -36,7 +36,7 @@ resource "aws_subnet" "public_subnet" {
   count                   = length(var.public_subnets_cidr)
   cidr_block              = element(var.public_subnets_cidr, count.index)
   availability_zone       = element(var.availability_zones, count.index)
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   tags = {
     Name        = "${var.environment}-${element(var.availability_zones, count.index)}-public-subnet"
     Environment = var.environment
@@ -146,7 +146,7 @@ resource "aws_security_group_rule" "public_in_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32"]
+  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32", "10.1.0.0/16"]
   security_group_id = aws_security_group.public.id
 }
  
@@ -155,7 +155,7 @@ resource "aws_security_group_rule" "public_in_http" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32"]
+  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32", "10.1.0.0/16"]
   security_group_id = aws_security_group.public.id
 }
  
@@ -164,12 +164,12 @@ resource "aws_security_group_rule" "public_in_https" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"   
-  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32"]
+  cidr_blocks       = ["82.44.60.17/32", "152.37.86.42/32", "10.1.0.0/16"]
   security_group_id = aws_security_group.public.id
 }
 
 resource "aws_instance" "ec2" {
-  ami = "ami-0e34bbddc66def5ac"
+  ami = var.image_id
   instance_type = "t2.micro"
   key_name = "bootstrap"
   iam_instance_profile = "EC2SSMAgentProfileL0"

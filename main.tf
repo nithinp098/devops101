@@ -12,12 +12,9 @@ module "london" {
     aws = aws.london
   }
   aws_region = "eu-west-2"
+  availability_zones = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+  image_id = "ami-0e34bbddc66def5ac"
 }
 
-module "ireland" {
-  source     = "./modules/platform-modules"
-  providers = {
-    aws = aws.ireland
-  }
-  aws_region = "eu-west-1"
-}
+
+
